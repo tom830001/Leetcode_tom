@@ -5,23 +5,21 @@ void quicksort(int * arr, int start, int end)
 {
 	if(start >= end)
 		return;
-	int temp = arr[start];
+	int pivot = arr[start]; //choose a pivot
 	int i = start, k = end;
 	while(i < k)
 	{
-        for (k; arr[k] >= temp && k > i; k--)
-		{
+		for(k; arr[k] >= pivot && k > i; k--);
 			arr[i] = arr[k];
-			arr[k] = temp;
-		}
-        for (i; arr[i] <= temp && i < k; i++);
-		{
+			arr[k] = pivot;
+		for(i; arr[i] <= pivot && i < k; i++);
 			arr[k] = arr[i];
-			arr[i] = temp;
-		}
+			arr[i] = pivot;
+		
 	}
 	quicksort(arr, start, i-1);
 	quicksort(arr, k+1, end);
+	
 }
 
 int* sort(int * arr, int start, int end)
@@ -31,13 +29,14 @@ int* sort(int * arr, int start, int end)
 } 
 int main()
 {
-	int arr[14] = {5,7,321,65,8,1,2,3,987,1,23,564,7,1};
-	sort(arr,0,14);
-	int i;
+	int arr[14] = {5,7,321,65,8,1,2,3,987,1,23,564,9,1},i;
+	sort(arr,0,13);
+	
 	for(i = 0; i < 14; i++)
 	{
 		printf("%d ",arr[i]);
 	}
 	printf("\n");
+	
 	return 0; 
 }
